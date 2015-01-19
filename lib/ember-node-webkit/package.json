@@ -2,5 +2,9 @@
   "name": "ember-node-webkit",
   "keywords": [
     "ember-addon"
-  ]
+  ],
+  "devDependencies": {
+    "chalk": "0.5.1",
+    "rsvp": "^3.0.16"
+  }
 }

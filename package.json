@@ -37,5 +37,14 @@
     "paths": [
       "lib/ember-node-webkit"
     ]
+  },
+  "main": "dist/index.html",
+  "window": {
+    "toolbar": true,
+    "frame": true,
+    "width": 800,
+    "height": 500,
+    "min_width": 400,
+    "min_height": 200
   }
 }
