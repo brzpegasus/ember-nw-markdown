@@ -1,7 +1,9 @@
 {
   "name": "ember-node-webkit",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "node-webkit",
+    "nw"
   ],
   "devDependencies": {
     "chalk": "0.5.1",

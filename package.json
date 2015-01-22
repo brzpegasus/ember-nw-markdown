@@ -43,6 +43,8 @@
   "window": {
     "frame": true,
     "toolbar": false,
+    "width": 960,
+    "height": 600,
     "min_width": 800,
     "min_height": 500
   }
