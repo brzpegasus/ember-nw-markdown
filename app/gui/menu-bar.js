@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import gui from './nw-gui';
 
-export default Ember.Object.extend({
+export default Ember.Object.extend(Ember.Evented, {
   init: function() {
     var menubar = new gui.Menu({ type: 'menubar' });
     this.set('menubar', menubar);
@@ -37,7 +37,7 @@ export default Ember.Object.extend({
       key: 's',
       modifiers: this.get('cmdKey'),
       click: function() {
-        this.notifyPropertyChange('save');
+        this.trigger('fileSave');
       }.bind(this)
     }));
 
