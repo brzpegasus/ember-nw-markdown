@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import eventManager from '../services/event-manager';
 
 var keys = Ember.keys;
 
@@ -10,13 +11,10 @@ export default Ember.Mixin.create({
   }),
 
   setEvents: function(type) {
-    var menu = this.get('menu');
     var events = this.get('menuEvents') || [];
 
-    if (!menu) { return; }
-
     keys(events).forEach(function(name) {
-      menu[type](name, this, events[name]);
+      eventManager[type](name, this, events[name]);
     }, this);
   },
 

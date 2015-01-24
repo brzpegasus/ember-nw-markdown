@@ -1,78 +1,31 @@
 import Ember from 'ember';
+import env from '../environment';
 import nodeRequire from '../services/node-require';
+
+import FileMenu from './menus/file';
+import ViewMenu from './menus/view';
 
 var gui = nodeRequire('nw.gui');
 
-export default Ember.Object.extend(Ember.Evented, {
+export default Ember.Object.extend({
   init: function() {
-    var menubar = new gui.Menu({ type: 'menubar' });
-    this.set('menubar', menubar);
+    this.set('menubar', new gui.Menu({ type: 'menubar' }));
   },
-
-  appWindow: Ember.computed(function() {
-    return gui.Window.get();
-  }),
-
-  isMacOS: Ember.computed(function() {
-    /* global process */
-    return process.platform === 'darwin';
-  }),
-
-  cmdKey: Ember.computed('isMacOS', function() {
-    return this.get('isMacOS') ? 'cmd' : 'ctrl';
-  }),
 
   addMenus: Ember.on('init', function() {
     var menubar = this.get('menubar');
+    var index = 0;
 
-    if (this.get('isMacOS')) {
+    if (env.get('isMac')) {
       menubar.createMacBuiltin('Ember Node WebKit');
     }
 
-    menubar.insert(this.get('fileMenu'), 1);
-    menubar.insert(this.get('viewMenu'), 2);
+    var fileMenu = FileMenu.create();
+    var viewMenu = ViewMenu.create();
 
-    this.get('appWindow').menu = menubar;
-  }),
+    menubar.insert(fileMenu.get('object'), ++index);
+    menubar.insert(viewMenu.get('object'), ++index);
 
-  fileMenu: Ember.computed(function() {
-    var fileMenu = new gui.Menu();
-
-    fileMenu.append(new gui.MenuItem({
-      label: 'Save',
-      key: 's',
-      modifiers: this.get('cmdKey'),
-      click: function() {
-        this.trigger('fileSave');
-      }.bind(this)
-    }));
-
-    return new gui.MenuItem({
-      label: 'File',
-      submenu: fileMenu
-    });
-  }),
-
-  viewMenu: Ember.computed(function() {
-    var viewMenu = new gui.Menu();
-    var win = this.get('appWindow');
-
-    viewMenu.append(new gui.MenuItem({
-      label: 'Developer Tools',
-      key: 'i',
-      modifiers: this.get('cmdKey') + '+alt',
-      click: function() {
-        if (win.isDevToolsOpen()) {
-          win.closeDevTools();
-        } else {
-          win.showDevTools();
-        }
-      }
-    }));
-
-    return new gui.MenuItem({
-      label: 'View',
-      submenu: viewMenu
-    });
+    env.get('appWindow').menu = menubar;
   })
 });
