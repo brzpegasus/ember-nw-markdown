@@ -1,6 +1,20 @@
-{{link-to 'Edit' 'document.edit'}}
-{{link-to 'Preview' 'document.preview'}}
+<nav>
+  <ul>
+    <li>{{link-to 'Edit' 'document.edit'}}</li>
+    <li>{{link-to 'Preview' 'document.preview'}}</li>
+  </ul>
+</nav>
 <div class="main-content">
-  {{input-file-save file=model}}
+  {{input-file-save file=model action="save"}}
   {{outlet}}
 </div>
+<footer>
+  <div>{{fileHandle}}</div>
+  <div>
+    {{#if model.isDirty}}
+      <span>Unsaved Changes</span>
+    {{else}}
+      <span>{{model.lastUpdated}}</span>
+    {{/if}}
+  </div>
+</footer>

@@ -12,10 +12,12 @@ export default Ember.Component.extend(MenuEventHandler, {
   nwsaveas: 'untitled.md',
 
   change: function() {
-    this.sendAction('action', this.$().val());
+    var filePath = this.$().val();
+    this.sendAction('action', filePath);
+    this.$().val('');
   },
 
-  openFileBrowser: function() {
+  openFileDialog: function() {
     run.scheduleOnce('afterRender', this, function() {
       this.$().click();
     });
@@ -24,7 +26,7 @@ export default Ember.Component.extend(MenuEventHandler, {
   menuEvents: {
     fileSave: function() {
       if (this.get('file.isNew')) {
-        this.openFileBrowser();
+        this.openFileDialog();
       }
     }
   }
