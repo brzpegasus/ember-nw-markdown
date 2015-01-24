@@ -1,11 +1,17 @@
 import Ember from 'ember';
-import gui from './nw-gui';
+import nodeRequire from '../services/node-require';
+
+var gui = nodeRequire('nw.gui');
 
 export default Ember.Object.extend(Ember.Evented, {
   init: function() {
     var menubar = new gui.Menu({ type: 'menubar' });
     this.set('menubar', menubar);
   },
+
+  appWindow: Ember.computed(function() {
+    return gui.Window.get();
+  }),
 
   isMacOS: Ember.computed(function() {
     /* global process */
@@ -23,10 +29,10 @@ export default Ember.Object.extend(Ember.Evented, {
       menubar.createMacBuiltin('Ember Node WebKit');
     }
 
-    var fileMenu = this.get('fileMenu');
-    menubar.insert(fileMenu, 1);
+    menubar.insert(this.get('fileMenu'), 1);
+    menubar.insert(this.get('viewMenu'), 2);
 
-    gui.Window.get().menu = menubar;
+    this.get('appWindow').menu = menubar;
   }),
 
   fileMenu: Ember.computed(function() {
@@ -44,6 +50,29 @@ export default Ember.Object.extend(Ember.Evented, {
     return new gui.MenuItem({
       label: 'File',
       submenu: fileMenu
+    });
+  }),
+
+  viewMenu: Ember.computed(function() {
+    var viewMenu = new gui.Menu();
+    var win = this.get('appWindow');
+
+    viewMenu.append(new gui.MenuItem({
+      label: 'Developer Tools',
+      key: 'i',
+      modifiers: this.get('cmdKey') + '+alt',
+      click: function() {
+        if (win.isDevToolsOpen()) {
+          win.closeDevTools();
+        } else {
+          win.showDevTools();
+        }
+      }
+    }));
+
+    return new gui.MenuItem({
+      label: 'View',
+      submenu: viewMenu
     });
   })
 });
