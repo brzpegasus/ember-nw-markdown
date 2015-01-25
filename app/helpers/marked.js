@@ -1,5 +1,11 @@
 import Ember from 'ember';
-import marked from 'marked';
+
+/* global marked, hljs */
+marked.setOptions({
+  highlight: function(content) {
+    return '<div class="hljs">' + hljs.highlightAuto(content).value + '</div>';
+  }
+});
 
 var mark;
 var htmlSafe = Ember.String.htmlSafe;
@@ -16,7 +22,7 @@ if (Ember.HTMLBars) {
 } else {
   mark = function mark(value, options) {
     var length = arguments.length;
-    var args = [value];
+    var args = [value || ''];
 
     if (length === 1) {
       throw new TypeError('Invalid number of arguments; expected 1');

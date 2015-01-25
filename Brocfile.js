@@ -17,12 +17,8 @@ var app = new EmberApp();
 // please specify an object with the list of modules as keys
 // along with the exports of each module as its value.
 
+app.import('vendor/highlight/highlight.min.js');
+app.import('vendor/highlight/styles/github.css');
 app.import(app.bowerDirectory + '/marked/lib/marked.js');
-
-app.import('vendor/marked/marked-shim.js', {
-  exports: {
-    marked: ['default']
-  }
-});
 
 module.exports = app.toTree();
