@@ -19,9 +19,7 @@ function mkdirIfNotExists(dirname) {
 
 export default {
   readFile: function(filename, options) {
-    var readOptions = {
-      encoding: 'utf8'
-    };
+    var readOptions = { encoding: 'utf8' };
     merge(readOptions, options);
 
     return readFile(filename, readOptions);

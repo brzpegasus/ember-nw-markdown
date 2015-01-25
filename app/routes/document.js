@@ -1,20 +1,40 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function() {
-    return this.store.createRecord('document');
+  queryParams: {
+    path: {
+      refreshModel: true
+    }
+  },
+
+  model: function(params) {
+    if (params.path) {
+      return this.store.find('document', params.path);
+    } else {
+      return this.store.createRecord('document');
+    }
   },
 
   actions: {
-    save: function(filePath) {
-      var wuphf = this.wuphf;
-      var doc = this.controller.get('model');
+    open: function(filename) {
+      // Rollback and unload the previous record for now.
+      // Future pass should probably ask user to confirm.
+      var model = this.controller.get('model');
+      model.rollback();
+      this.store.unloadRecord(model);
 
-      if (filePath) {
-        doc.set('filename', filePath);
+      this.controller.set('path', filename);
+    },
+
+    save: function(filename) {
+      var wuphf = this.wuphf;
+      var model = this.controller.get('model');
+
+      if (filename) {
+        model.set('filename', filename);
       }
 
-      doc.save().then(null, function(error) {
+      model.save().then(null, function(error) {
         wuphf.danger(error.message, 5000);
       });
     }

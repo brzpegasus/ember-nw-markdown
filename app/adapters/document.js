@@ -5,6 +5,18 @@ import fs from '../services/fs';
 var RSVP = Ember.RSVP;
 
 export default DS.Adapter.extend({
+  find: function(store, type, filename) {
+    var promise = fs.readFile(filename);
+
+    return promise.then(function(data) {
+      return {
+        id: filename,
+        filename: filename,
+        body: data
+      };
+    });
+  },
+
   createRecord: function(store, type, record) {
     var promise = this.saveRecord(record);
 
@@ -21,7 +33,7 @@ export default DS.Adapter.extend({
   saveRecord: function(record) {
     var filename = record.get('filename');
     if (!filename) {
-      return RSVP.reject(new Error("Unable to create record with a `null` filename."));
+      return RSVP.reject(new Error("Filename cannot be null."));
     }
     return fs.writeFile(filename, record.get('body'));
   }

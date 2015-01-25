@@ -1,11 +1,12 @@
 <nav>
   <ul>
-    <li>{{link-to 'Edit' 'document.edit'}}</li>
-    <li>{{link-to 'Preview' 'document.preview'}}</li>
+    <li>{{link-to "Edit" "document.edit"}}</li>
+    <li>{{link-to "Preview" "document.preview"}}</li>
   </ul>
 </nav>
 <div class="main-content">
-  {{input-file-save file=model action="save"}}
+  {{input-file-open action="open"}}
+  {{input-file-save saveAs=model.isNew action="save"}}
   {{outlet}}
 </div>
 <footer>
