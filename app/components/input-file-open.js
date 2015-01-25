@@ -8,6 +8,10 @@ export default InputFile.extend({
   menuEvents: {
     fileOpen: function() {
       this.openFileDialog();
+    },
+
+    fileNew: function() {
+      this.sendAction();
     }
   }
 });

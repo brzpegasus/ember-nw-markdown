@@ -17,13 +17,26 @@ export default Ember.Route.extend({
 
   actions: {
     open: function(filename) {
+      var controller = this.controller;
+
       // Rollback and unload the previous record for now.
       // Future pass should probably ask user to confirm.
-      var model = this.controller.get('model');
+      var model = controller.get('model');
       model.rollback();
       this.store.unloadRecord(model);
 
-      this.controller.set('path', filename);
+      // Open an existing file
+      if (filename) {
+        controller.set('path', filename);
+        return;
+      }
+
+      // Open a new file
+      if (controller.get('path')) {
+        controller.set('path', null);
+      } else {
+        this.refresh();
+      }
     },
 
     save: function(filename) {
