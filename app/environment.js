@@ -1,7 +1,5 @@
 import Ember from 'ember';
-import nodeRequire from './services/node-require';
-
-var gui = nodeRequire('nw.gui');
+import gui from './nw/gui';
 
 export default Ember.Object.createWithMixins({
   isNodeWebKit: Ember.computed(function() {

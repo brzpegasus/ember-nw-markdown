@@ -1,11 +1,9 @@
 import Ember from 'ember';
 import env from '../environment';
-import nodeRequire from '../services/node-require';
+import gui from '../nw/gui';
 
-import FileMenu from './menus/file';
-import ViewMenu from './menus/view';
-
-var gui = nodeRequire('nw.gui');
+import FileMenu from './file';
+import ViewMenu from './view';
 
 export default Ember.Object.extend({
   init: function() {

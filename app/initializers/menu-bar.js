@@ -1,4 +1,4 @@
-import MenuBar from '../gui/menu-bar';
+import MenuBar from '../menus/menu-bar';
 import env from '../environment';
 
 export default {

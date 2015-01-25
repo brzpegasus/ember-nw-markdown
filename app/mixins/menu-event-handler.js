@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import eventManager from '../services/event-manager';
+import eventManager from '../services/event';
 
 var keys = Ember.keys;
 

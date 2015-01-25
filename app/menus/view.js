@@ -1,12 +1,10 @@
 import Ember from 'ember';
-import nodeRequire from '../../services/node-require';
+import gui from '../nw/gui';
 
-import Menu from '../base/menu';
+import Menu from './base/menu';
 import DevTools from './view/dev-tools';
 import Reload from './view/reload';
 import ReloadNoCache from './view/reload-no-cache';
-
-var gui = nodeRequire('nw.gui');
 
 export default Menu.extend({
   label: 'View',
