@@ -1,21 +1,27 @@
-<nav>
-  <ul>
-    <li>{{link-to "Edit" "document.edit"}}</li>
-    <li>{{link-to "Preview" "document.preview"}}</li>
-  </ul>
-</nav>
-<div class="main-content">
-  {{input-file-open action="open"}}
-  {{input-file-save saveAs=model.isNew action="save"}}
-  {{outlet}}
+<div id="wrapper">
+  <header id="header" class="document__header">
+    <nav>
+      <ul class="document__tabs">
+        {{link-to "Edit" "document.edit" tagName="li" classNames="document__tab"}}
+        {{link-to "Preview" "document.preview" tagName="li" classNames="document__tab"}}
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="document__pane">
+    {{input-file-open action="open"}}
+    {{input-file-save saveAs=model.isNew action="save"}}
+    {{outlet}}
+  </main>
+
+  <footer id="footer" class="document__footer">
+    <section>{{fileHandle}}</section>
+    <section>
+      {{#if model.isDirty}}
+        <span>Unsaved Changes</span>
+      {{else}}
+        <span>{{model.lastUpdated}}</span>
+      {{/if}}
+    </section>
+  </footer>
 </div>
-<footer>
-  <div>{{fileHandle}}</div>
-  <div>
-    {{#if model.isDirty}}
-      <span>Unsaved Changes</span>
-    {{else}}
-      <span>{{model.lastUpdated}}</span>
-    {{/if}}
-  </div>
-</footer>

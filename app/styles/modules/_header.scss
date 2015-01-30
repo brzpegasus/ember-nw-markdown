@@ -1,0 +1,32 @@
+.document {
+  &__header {
+    background-color: $headings-bg-color;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  &__tabs {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 3em;
+  }
+
+  &__tab {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1 auto;
+    cursor: pointer;
+
+    border-bottom: {
+      width: 2px;
+      style: solid;
+      color: transparent;
+    }
+
+    &.active {
+      border-bottom-color: $highlight;
+    }
+  }
+}

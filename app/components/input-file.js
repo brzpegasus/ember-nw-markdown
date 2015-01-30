@@ -6,7 +6,6 @@ var run = Ember.run;
 
 export default Ember.Component.extend(MenuEventHandler, {
   tagName: 'input',
-  classNames: ['nw-input-file'],
   attributeBindings: ['type', 'nwworkingdir'],
 
   type: 'file',

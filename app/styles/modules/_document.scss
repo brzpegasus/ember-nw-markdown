@@ -1,0 +1,21 @@
+.document__pane {
+  display: flex;
+
+  &--editor {
+    width: 100%;
+    margin: 0 auto;
+    padding: 2em 0;
+    display: flex;
+    flex-direction: column;
+
+    & > textarea {
+      padding: 0 20%;
+      flex: auto;
+    }
+  }
+
+  &--previewer {
+    padding: 1em 20%;
+    overflow: auto;
+  }
+}

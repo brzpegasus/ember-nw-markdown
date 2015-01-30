@@ -1,0 +1,13 @@
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#header, #footer {
+  flex: none;
+}
+
+#main {
+  flex: auto;
+}

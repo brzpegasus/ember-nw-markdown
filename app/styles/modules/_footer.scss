@@ -1,0 +1,9 @@
+.document__footer {
+  background-color: $headings-bg-color;
+  height: 2em;
+  padding: 0.2em 0.5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}

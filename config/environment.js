@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'ember-node-webkit-app',
     environment: environment,
-    baseURL: '',
+    baseURL: '/',
     locationType: 'hash',
     EmberENV: {
       FEATURES: {
