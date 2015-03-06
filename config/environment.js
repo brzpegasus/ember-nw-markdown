@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    modulePrefix: 'ember-node-webkit-app',
+    modulePrefix: 'ember-nw-markdown',
     environment: environment,
     baseURL: '/',
     locationType: 'hash',

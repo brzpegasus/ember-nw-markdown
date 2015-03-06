@@ -1,7 +1,7 @@
 {
-  "name": "ember-node-webkit-app",
+  "name": "ember-nw-markdown",
   "version": "0.0.0",
-  "description": "Small description for ember-node-webkit-app goes here",
+  "description": "An Ember NW.js app to edit and preview markdown documents.",
   "private": true,
   "directories": {
     "doc": "doc",
@@ -24,8 +24,8 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.0",
     "ember-cli": "0.2.0-beta.1",
-    "ember-cli-babel": "^4.0.0",
     "ember-cli-app-version": "0.3.1",
+    "ember-cli-babel": "^4.0.0",
     "ember-cli-content-security-policy": "0.3.0",
     "ember-cli-dependency-checker": "0.0.7",
     "ember-cli-htmlbars": "0.7.4",

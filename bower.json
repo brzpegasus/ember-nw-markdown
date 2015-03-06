@@ -1,5 +1,5 @@
 {
-  "name": "ember-node-webkit-app",
+  "name": "ember-nw-markdown",
   "dependencies": {
     "jquery": "^1.11.1",
     "ember": "1.10",
