@@ -39,7 +39,8 @@
     "ember-export-application-global": "^1.0.2",
     "ember-wuphf": "0.0.2",
     "express": "^4.8.5",
-    "glob": "^4.0.5"
+    "glob": "^4.0.5",
+    "rimraf": "2.3.1"
   },
   "main": "dist/index.html",
   "window": {
