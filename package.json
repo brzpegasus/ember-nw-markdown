@@ -19,6 +19,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "rsvp": "^3.0.17",
     "wrench": "^1.5.8"
   },
   "devDependencies": {
@@ -43,6 +44,7 @@
     "rimraf": "2.3.1"
   },
   "main": "dist/index.html",
+  "node-main": "dist/index.js",
   "window": {
     "toolbar": false,
     "width": 960,

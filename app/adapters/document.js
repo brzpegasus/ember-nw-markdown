@@ -1,12 +1,16 @@
 import Ember from 'ember';
 import DS from 'ember-data';
-import fs from '../services/fs';
 
 var RSVP = Ember.RSVP;
+var computed = Ember.computed;
 
 export default DS.Adapter.extend({
+  nw: Ember.inject.service(),
+
+  fileUtil: computed.alias('nw.fileUtil'),
+
   find: function(store, type, filename) {
-    var promise = fs.readFile(filename);
+    var promise = this.get('fileUtil').readFile(filename);
 
     return promise.then(function(data) {
       return {
@@ -35,6 +39,7 @@ export default DS.Adapter.extend({
     if (!filename) {
       return RSVP.reject(new Error("Filename cannot be null."));
     }
-    return fs.writeFile(filename, record.get('body'));
+
+    return this.get('fileUtil').writeFile(filename, record.get('body'));
   }
 });

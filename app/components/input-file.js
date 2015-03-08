@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import env from '../environment';
+import ENV from '../environment';
 import MenuEventHandler from '../mixins/menu-event-handler';
 
 var run = Ember.run;
@@ -11,7 +11,7 @@ export default Ember.Component.extend(MenuEventHandler, {
   type: 'file',
 
   nwworkingdir: Ember.computed(function() {
-    return env.get('userHome');
+    return ENV.userHome;
   }),
 
   change: function() {

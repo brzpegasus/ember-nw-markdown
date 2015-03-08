@@ -1,3 +1,1 @@
-import require from './require';
-
-export default require('nw.gui');
+export default window.requireNode && window.requireNode('nw.gui');
