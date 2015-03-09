@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import DS from 'ember-data';
 
-var RSVP = Ember.RSVP;
 var computed = Ember.computed;
+var inject   = Ember.inject;
+var RSVP     = Ember.RSVP;
 
 export default DS.Adapter.extend({
-  nw: Ember.inject.service(),
+  nw: inject.service(),
 
   fileUtil: computed.alias('nw.fileUtil'),
 

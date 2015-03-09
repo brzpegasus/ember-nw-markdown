@@ -2,15 +2,15 @@ import Ember from 'ember';
 import ENV from '../environment';
 import MenuEventHandler from '../mixins/menu-event-handler';
 
-var run = Ember.run;
+var computed = Ember.computed;
+var run      = Ember.run;
 
 export default Ember.Component.extend(MenuEventHandler, {
   tagName: 'input',
   attributeBindings: ['type', 'nwworkingdir'],
-
   type: 'file',
 
-  nwworkingdir: Ember.computed(function() {
+  nwworkingdir: computed(function() {
     return ENV.userHome;
   }),
 
