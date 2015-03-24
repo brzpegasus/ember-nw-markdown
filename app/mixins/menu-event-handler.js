@@ -11,7 +11,7 @@ export default Ember.Mixin.create({
 
   setEvents: function(type) {
     var menu = this.get('menu');
-    var events = this.get('menuEvents') || [];
+    var events = this.get('menuEvents') || {};
 
     keys(events).forEach(function(name) {
       menu[type](name, this, events[name]);
