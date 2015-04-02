@@ -23,11 +23,11 @@
     "wrench": "^1.5.8"
   },
   "devDependencies": {
-    "broccoli-asset-rev": "^2.0.0",
-    "ember-cli": "^0.2.0",
-    "ember-cli-app-version": "0.3.1",
+    "broccoli-asset-rev": "^2.0.2",
+    "ember-cli": "0.2.2",
+    "ember-cli-app-version": "0.3.3",
     "ember-cli-babel": "^4.0.0",
-    "ember-cli-content-security-policy": "0.3.0",
+    "ember-cli-content-security-policy": "0.4.0",
     "ember-cli-dependency-checker": "0.0.8",
     "ember-cli-htmlbars": "0.7.4",
     "ember-cli-ic-ajax": "0.1.1",
@@ -36,7 +36,7 @@
     "ember-cli-qunit": "0.3.9",
     "ember-cli-sass": "^3.1.0-beta",
     "ember-cli-uglify": "1.0.1",
-    "ember-data": "1.0.0-beta.15",
+    "ember-data": "1.0.0-beta.16.1",
     "ember-export-application-global": "^1.0.2",
     "ember-wuphf": "0.0.2",
     "nw": "0.12.0"
