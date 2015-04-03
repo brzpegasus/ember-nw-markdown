@@ -22,25 +22,25 @@ export default DS.Adapter.extend({
     });
   },
 
-  createRecord: function(store, type, record) {
-    var promise = this.saveRecord(record);
+  createRecord: function(store, type, snapshot) {
+    var promise = this.saveRecord(snapshot);
 
     return promise.catch(function(error) {
-      record.set('filename', null);
+      snapshot.record.set('filename', null);
       return RSVP.reject(error);
     });
   },
 
-  updateRecord: function(store, type, record) {
-    return this.saveRecord(record);
+  updateRecord: function(store, type, snapshot) {
+    return this.saveRecord(snapshot);
   },
 
-  saveRecord: function(record) {
-    var filename = record.get('filename');
+  saveRecord: function(snapshot) {
+    var filename = snapshot.attr('filename');
     if (!filename) {
       return RSVP.reject(new Error("Filename cannot be null."));
     }
 
-    return this.get('fileUtil').writeFile(filename, record.get('body'));
+    return this.get('fileUtil').writeFile(filename, snapshot.attr('body'));
   }
 });
