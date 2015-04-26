@@ -24,5 +24,6 @@ var app = new EmberApp({
 app.import('vendor/highlight/highlight.min.js');
 app.import('vendor/highlight/styles/github.css');
 app.import(app.bowerDirectory + '/marked/lib/marked.js');
+app.import(app.bowerDirectory + '/sinonjs/sinon.js', { type: 'test' });
 
 module.exports = app.toTree();

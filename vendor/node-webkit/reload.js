@@ -1,10 +1,14 @@
+/* jshint browser: true */
 (function() {
-  if (!window.nwDispatcher) return;
+  if (!window.nwDispatcher) { return; }
 
   // Reload the page when anything in `dist` changes
   var fs = window.requireNode('fs');
+  var watchDir = './dist';
 
-  fs.watch('./dist', function() {
-    window.location.reload();
-  });
+  if (fs.existsSync(watchDir)) {
+    fs.watch(watchDir, function() {
+      window.location.reload();
+    });
+  }
 })();
