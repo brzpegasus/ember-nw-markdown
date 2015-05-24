@@ -3,6 +3,8 @@ import Ember from 'ember';
 var keys = Ember.keys;
 
 export default Ember.Mixin.create({
+  nw: Ember.inject.service(),
+
   mergedProperties: ['menuEvents'],
 
   addHandlers: Ember.on('init', function() {
@@ -10,11 +12,11 @@ export default Ember.Mixin.create({
   }),
 
   setEvents: function(type) {
-    var menu = this.get('menu');
+    var nw = this.get('nw');
     var events = this.get('menuEvents') || {};
 
     keys(events).forEach(function(name) {
-      menu[type](name, this, events[name]);
+      nw[type](name, this, events[name]);
     }, this);
   },
 

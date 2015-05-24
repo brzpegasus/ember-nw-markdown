@@ -4,20 +4,22 @@ import gui from '../nw/gui';
 import fileMenu from './menus/file';
 import viewMenu from './menus/view';
 
-export default Ember.Object.extend(Ember.Evented, {
+export default Ember.Object.extend({
+  nw: Ember.inject.service(),
+
   createMenu: Ember.on('init', function() {
     if (!ENV.isNodeWebKit) { return; }
 
-    var appMenu = this;
+    var nw = this.get('nw');
     var menuBar = new gui.Menu({ type: 'menubar' });
 
     if (ENV.isMac) {
       menuBar.createMacBuiltin('Markdown Editor');
-      menuBar.insert(fileMenu(appMenu), 1);
-      menuBar.insert(viewMenu(appMenu), 2);
+      menuBar.insert(fileMenu(nw), 1);
+      menuBar.insert(viewMenu(nw), 2);
     } else {
-      menuBar.append(fileMenu(appMenu));
-      menuBar.append(viewMenu(appMenu));
+      menuBar.append(fileMenu(nw));
+      menuBar.append(viewMenu(nw));
     }
 
     gui.Window.get().menu = menuBar;

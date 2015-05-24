@@ -1,7 +1,7 @@
 import ENV from '../../environment';
 import gui from '../gui';
 
-export default function(appMenu) {
+export default function(nw) {
   if (!ENV.isNodeWebKit) { return; }
 
   var submenu = new gui.Menu();
@@ -12,7 +12,7 @@ export default function(appMenu) {
     key: 'n',
     modifiers: cmd,
     click: function() {
-      appMenu.trigger('fileNew');
+      nw.trigger('fileNew');
     }
   }));
 
@@ -21,7 +21,7 @@ export default function(appMenu) {
     key: 'o',
     modifiers: cmd,
     click: function() {
-      appMenu.trigger('fileOpen');
+      nw.trigger('fileOpen');
     }
   }));
 
@@ -30,7 +30,7 @@ export default function(appMenu) {
     key: 's',
     modifiers: cmd,
     click: function() {
-      appMenu.trigger('fileSave');
+      nw.trigger('fileSave');
     }
   }));
 

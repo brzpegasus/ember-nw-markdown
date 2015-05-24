@@ -2,18 +2,9 @@ import Ember from 'ember';
 import { test, moduleForComponent } from 'ember-qunit';
 
 var run = Ember.run;
-var menu;
 
 moduleForComponent('input-file-open', 'Unit - Input File Open Component', {
-  beforeEach: function() {
-    var Menu = Ember.Object.extend(Ember.Evented);
-    menu = Menu.create();
-    this.subject({ menu: menu });
-  },
-
-  afterEach: function() {
-    run(menu, 'destroy');
-  }
+  integration: true
 });
 
 test("should open a file dialog when the 'File > Open' menu is selected", function(assert) {
@@ -28,7 +19,8 @@ test("should open a file dialog when the 'File > Open' menu is selected", functi
 
   this.render();
 
-  run(menu, 'trigger', 'fileOpen');
+  var nw = component.get('nw');
+  run(nw, 'trigger', 'fileOpen');
   assert.ok(clicked, "click was triggered to open the file dialog");
 });
 
@@ -64,6 +56,7 @@ test("should trigger the primary action when the 'File > New' menu is selected",
     }
   });
 
-  run(menu, 'trigger', 'fileNew');
+  var nw = component.get('nw');
+  run(nw, 'trigger', 'fileNew');
   assert.ok(isActionCalled, "action was called");
 });
