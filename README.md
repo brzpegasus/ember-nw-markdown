@@ -40,9 +40,8 @@ This version lets you edit and preview documents but you won't have access to an
 
 ### Running Tests
 
-* `ember test` to run with PhantomJS
-* `ember test --server` to run with Testem (launches both Chrome and PhantomJS)
-* Or run `ember serve` and navigate to [http://localhost:4200/tests](http://localhost:4200/tests).
+* `ember nw:test` for continuous integration
+* `ember nw:test --server` for development
 
 ### Packaging
 
