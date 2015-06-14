@@ -39,16 +39,13 @@ export default Ember.Route.extend({
     },
 
     save: function(filename) {
-      var wuphf = this.wuphf;
       var model = this.controller.get('model');
 
       if (filename) {
         model.set('filename', filename);
       }
 
-      model.save().then(null, function(error) {
-        wuphf.danger(error.message, 5000);
-      });
+      model.save();
     }
   }
 });
