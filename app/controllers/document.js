@@ -7,5 +7,5 @@ export default Ember.Controller.extend({
   path: null,
   placeholder: 'New Document',
 
-  fileHandle: computed.any('model.filename', 'placeholder')
+  fileHandle: computed.or('model.filename', 'placeholder')
 });
