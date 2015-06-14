@@ -18,17 +18,5 @@ export default function startApp(attrs) {
     application.injectTestHelpers();
   });
 
-  var container = application.__container__;
-  var nwService = container.lookup('service:nw');
-
-  nwService.set('fileUtil', {
-    readFile: function() {
-      return RSVP.resolve('foo bar baz');
-    },
-    writeFile: function() {
-      return RSVP.resolve();
-    }
-  });
-
   return application;
 }
